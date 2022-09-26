@@ -240,6 +240,15 @@ class GraphNode<T> extends GraphElement {
 
   List<GraphNode> get prevList => _prevList ??= [];
   List<GraphNode> get nextList => _nextList ??= [];
+    
+  toJson() {
+    return {
+        'data': data.toString(),
+        'proximo': nextList.map((objeto) {
+            return objeto.toJson();
+        }).toList(),
+    };
+  }
 
   void addNext(GraphNode node) {
     nextList.add(node);
